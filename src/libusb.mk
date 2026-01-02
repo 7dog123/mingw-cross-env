@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 9a0959a9a4fc537553786dd38207663e974ac6f1
 $(PKG)_SUBDIR   := $(PKG)-win32-src-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-win32-src-$($(PKG)_VERSION).zip
 $(PKG)_WEBSITE  := http://libusb-win32.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)-win32/$(PKG)-win32-releases/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/$(PKG)-win32/files/$(PKG)-win32-releases/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

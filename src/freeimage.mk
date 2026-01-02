@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := ec2faa01d1b312aab68d77afe62861759c790100
 $(PKG)_SUBDIR   := FreeImage
 $(PKG)_FILE     := FreeImage$(subst .,,$($(PKG)_VERSION)).zip
 $(PKG)_WEBSITE  := http://freeimage.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/freeimage/Source Distribution/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/freeimage/files/Source Distribution/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

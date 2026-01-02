@@ -4,8 +4,8 @@
 # libiconv
 PKG             := libiconv
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 1.13.1
-$(PKG)_CHECKSUM := 5b0524131cf0d7abd50734077f13aaa5508f6bbe
+$(PKG)_VERSION  := 1.9.2
+$(PKG)_CHECKSUM := 41090f57ef638aaf531c964256cc91735e46438f
 $(PKG)_SUBDIR   := libiconv-$($(PKG)_VERSION)
 $(PKG)_FILE     := libiconv-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://www.gnu.org/software/libiconv/

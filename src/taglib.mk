@@ -8,8 +8,8 @@ $(PKG)_VERSION  := 1.7
 $(PKG)_CHECKSUM := 5138e1665182bc2171e298ff31518c9ad72ddf23
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
-$(PKG)_WEBSITE  := http://developer.kde.org/~wheeler/taglib.html
-$(PKG)_URL      := http://developer.kde.org/~wheeler/files/src/$($(PKG)_FILE)
+$(PKG)_WEBSITE  := https://taglib.org/releases/
+$(PKG)_URL      := https://$(PKG).org/releases/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc zlib
 
 define $(PKG)_UPDATE

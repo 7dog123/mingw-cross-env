@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 5cd489e07517a88262cd6050f723227664e82996
 $(PKG)_SUBDIR   := gtkglextmm-$($(PKG)_VERSION)
 $(PKG)_FILE     := gtkglextmm-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://gtkglext.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/gtkglext/gtkglextmm/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/gtkglext/files/gtkglextmm/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc gtkglext gtkmm2
 
 define $(PKG)_UPDATE

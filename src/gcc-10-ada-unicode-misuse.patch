@@ -1,0 +1,112 @@
+# HG changeset patch
+# Parent 86ce4aa04401ebd2603608d9414f8deed8f272ec
+
+diff --git a/gcc/ada/adaint.c b/gcc/ada/adaint.c
+--- a/gcc/ada/adaint.c
++++ b/gcc/ada/adaint.c
+@@ -42,10 +42,18 @@
+ #ifndef _LARGEFILE_SOURCE
+ #define _LARGEFILE_SOURCE
+ #endif
+ #define _FILE_OFFSET_BITS 64
+ 
++#if defined (__MINGW32__) || defined (__CYGWIN__)
++/* We MUST do this up-front, because definition of the UNICODE feature
++ * test macros is (erroneously) delegated to this private header, and
++ * these MUST be defined BEFORE any system header may be included.
++ */
++#include "mingw32.h"
++#endif
++
+ #ifdef __vxworks
+ 
+ /* No need to redefine exit here.  */
+ #undef exit
+ 
+@@ -112,12 +120,10 @@
+ extern "C" {
+ #endif
+ 
+ #if defined (__MINGW32__) || defined (__CYGWIN__)
+ 
+-#include "mingw32.h"
+-
+ /* Current code page and CCS encoding to use, set in initialize.c.  */
+ UINT CurrentCodePage;
+ UINT CurrentCCSEncoding;
+ 
+ #include <sys/utime.h>
+diff --git a/gcc/ada/mingw32.h b/gcc/ada/mingw32.h
+--- a/gcc/ada/mingw32.h
++++ b/gcc/ada/mingw32.h
+@@ -34,12 +34,10 @@
+     set. This files contains also the circuitry for the unicode support.   */
+ 
+ #ifndef _MINGW32_H
+ #define _MINGW32_H
+ 
+-#include <_mingw.h>
+-
+ #ifndef RTX
+ #define GNAT_UNICODE_SUPPORT
+ #define _UNICODE /* For C runtime */
+ #define UNICODE  /* For Win32 API */
+ #endif
+@@ -47,10 +45,14 @@
+ /* We need functionality available only starting with Windows XP */
+ #ifndef _WIN32_WINNT
+ #define _WIN32_WINNT 0x0501
+ #endif
+ 
++#include <_mingw.h>
++
++_BEGIN_C_DECLS
++
+ #ifndef __CYGWIN__
+ #include <tchar.h>
+ #endif
+ #if defined (__CYGWIN__) && !defined (__CYGWIN32__) && !defined (IN_RTS)
+ /* Note: windows.h on cygwin-64 includes x86intrin.h which uses malloc.
+@@ -128,6 +130,8 @@ extern UINT CurrentCCSEncoding;
+ 
+ #ifndef MAXPATHLEN
+ #define MAXPATHLEN MAX_PATH
+ #endif
+ 
++_END_C_DECLS
++
+ #endif /* _MINGW32_H */
+diff --git a/gcc/ada/rtinit.c b/gcc/ada/rtinit.c
+--- a/gcc/ada/rtinit.c
++++ b/gcc/ada/rtinit.c
+@@ -38,10 +38,18 @@
+    that the __vxworks header appear before any other include.  */
+ #ifdef __vxworks
+ #include "vxWorks.h"
+ #endif
+ 
++/* Likewise this, to ensure that the UNICODE feature test macros, which
++ * are defined in "mingw32.h", (contrary to established convention), get
++ * defined before any other header is included.
++ */
++#if defined (__MINGW32__)
++#include "mingw32.h"
++#endif
++
+ #ifdef IN_RTS
+ #include "tconfig.h"
+ #include "tsystem.h"
+ /* We don't have libiberty, so use malloc.  */
+ #define xmalloc(S) malloc (S)
+@@ -70,11 +78,10 @@ int __gnat_wide_text_translation_require
+ int __gnat_rt_init_count = 0;
+ /* number of references to the GNAT runtime, this is used to initialize
+    and finalize properly the run-time. */
+ 
+ #if defined (__MINGW32__)
+-#include "mingw32.h"
+ #include <windows.h>
+ 
+ extern void __gnat_init_float (void);
+ 
+ extern int gnat_argc;

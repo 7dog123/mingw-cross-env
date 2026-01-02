@@ -4,12 +4,12 @@
 # FreeTDS
 PKG             := freetds
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 0.91.dev.20110523RC2
-$(PKG)_CHECKSUM := c5848c9bf940782730dddf24a3bff141c9c9c369
+$(PKG)_VERSION  := 0.91RC2
+$(PKG)_CHECKSUM := 730cccaf1e635dc0bb7517b385fe464e9fc7e31c
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://www.freetds.org/
-$(PKG)_URL      := https://bitbucket.org/mabrand/mingw-cross-env/downloads/$($(PKG)_FILE)
+$(PKG)_URL      := https://www.freetds.org/files/stable/release_candidates/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc libiconv gnutls
 
 define $(PKG)_UPDATE

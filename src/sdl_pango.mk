@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := c30f2941d476d9362850a150d29cb4a93730af68
 $(PKG)_SUBDIR   := SDL_Pango-$($(PKG)_VERSION)
 $(PKG)_FILE     := SDL_Pango-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://sdlpango.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/sdlpango/SDL_Pango/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/sdlpango/files/SDL_Pango/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc sdl pango
 
 define $(PKG)_UPDATE

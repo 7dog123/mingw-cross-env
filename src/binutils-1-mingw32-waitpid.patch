@@ -1,0 +1,31 @@
+From 90b4491842980d57a0e572167a168e04a476bca5 Mon Sep 17 00:00:00 2001
+From: Eli Zaretskii <eliz@gnu.org>
+Date: Wed, 31 May 2017 09:37:48 +0300
+Subject: [PATCH] Make libiberty/waitpid.c compile without warnings on MinGW
+
+libiberty/ChangeLog:
+
+2017-05-31  Eli Zaretskii  <eliz@gnu.org>
+
+	* waitpid.c (wait) [__MINGW32__]: Define as a macro
+	that calls _cwait, so that this function works on MinGW.
+---
+ libiberty/waitpid.c | 5 +++++
+ 1 files changed, 5 insertions(+)
+
+diff --git a/libiberty/waitpid.c b/libiberty/waitpid.c
+index fd519d7696e0..c0e9c3e0ca99 100644
+--- a/libiberty/waitpid.c
++++ b/libiberty/waitpid.c
+@@ -23,6 +23,11 @@ does the return value.  The third argument is unused in @libib{}.
+ #include <sys/wait.h>
+ #endif
+ 
++#ifdef __MINGW32__
++#include <process.h>
++#define wait(s)  _cwait(s,pid,_WAIT_CHILD)
++#endif
++
+ pid_t
+ waitpid (pid_t pid, int *stat_loc, int options ATTRIBUTE_UNUSED)
+ {

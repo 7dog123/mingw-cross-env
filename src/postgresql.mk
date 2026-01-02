@@ -9,8 +9,7 @@ $(PKG)_CHECKSUM := 5c4ebc2abbbc63ce2973974a7d020e7d14a01e73
 $(PKG)_SUBDIR   := postgresql-$($(PKG)_VERSION)
 $(PKG)_FILE     := postgresql-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://www.postgresql.org/
-$(PKG)_URL      := http://ftp2.nl.postgresql.org/source/v$($(PKG)_VERSION)/$($(PKG)_FILE)
-$(PKG)_URL_2    := http://ftp10.us.postgresql.org/postgresql/source/v$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://ftp.postgresql.org/pub/source/v9.0.4/postgresql-9.0.4.tar.bz2
 $(PKG)_DEPS     := gcc zlib openssl
 
 define $(PKG)_UPDATE

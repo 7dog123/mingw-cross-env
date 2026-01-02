@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := b3ef8bff215bbacd988790615b76379672105928
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://sourceforge.net/projects/$(PKG)/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/$(PKG)/files/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc libxml2 libxslt
 
 define $(PKG)_UPDATE

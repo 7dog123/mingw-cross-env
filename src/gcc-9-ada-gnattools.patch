@@ -1,0 +1,41 @@
+# HG changeset patch
+# Parent 0d0d60e4a31cddf1c23f4f73901d42ee936c2c06
+diff --git a/gnattools/Makefile.in b/gnattools/Makefile.in
+--- a/gnattools/Makefile.in
++++ b/gnattools/Makefile.in
+@@ -195,11 +195,11 @@ gnattools-native: $(GCC_DIR)/stamp-tools
+ 	$(MAKE) -C $(GCC_DIR)/ada/tools -f ../Makefile \
+ 	  $(TOOLS_FLAGS_TO_PASS_NATIVE) \
+ 	  ../../gnatmake$(exeext) ../../gnatlink$(exeext)
+ 	# gnattools2
+ 	$(MAKE) -C $(GCC_DIR)/ada/tools -f ../Makefile \
+-	  $(TOOLS_FLAGS_TO_PASS_NATIVE) common-tools
++	  $(TOOLS_FLAGS_TO_PASS_NATIVE) common-tools $(EXTRA_GNATTOOLS)
+ 
+ # gnatmake/link can be built with recent gnatmake/link if they are available.
+ # This is especially convenient for building cross tools or for rebuilding
+ # the tools when the original bootstrap has already be done.
+ regnattools: $(GCC_DIR)/stamp-gnatlib-rts
+@@ -207,20 +207,20 @@ regnattools: $(GCC_DIR)/stamp-gnatlib-rt
+ 	$(MAKE) -C $(GCC_DIR)/ada/tools -f ../Makefile \
+ 	  $(TOOLS_FLAGS_TO_PASS_RE) INCLUDES="" \
+ 	  gnatmake-re gnatlink-re
+ 	# gnattools2
+ 	$(MAKE) -C $(GCC_DIR)/ada/tools -f ../Makefile \
+-	  $(TOOLS_FLAGS_TO_PASS_NATIVE) common-tools
++	  $(TOOLS_FLAGS_TO_PASS_NATIVE) common-tools $(EXTRA_GNATTOOLS)
+ 
+ gnattools-cross: $(GCC_DIR)/stamp-tools
+ 	# gnattools1-re
+ 	$(MAKE) -C $(GCC_DIR)/ada/tools -f ../Makefile \
+ 	  $(TOOLS_FLAGS_TO_PASS_CROSS) INCLUDES="" \
+ 	  gnatmake-re gnatlink-re
+ 	# gnattools2
+ 	$(MAKE) -C $(GCC_DIR)/ada/tools -f ../Makefile \
+-	  $(TOOLS_FLAGS_TO_PASS_CROSS) common-tools
++	  $(TOOLS_FLAGS_TO_PASS_CROSS) common-tools $(EXTRA_GNATTOOLS)
+ 	# Rename cross tools to where the GCC makefile wants them when
+ 	# installing.  FIXME: installation should be done elsewhere.
+ 	if [ -f $(GCC_DIR)/gnatbind$(exeext) ] ; then \
+ 	  mv $(GCC_DIR)/gnatbind$(exeext) $(GCC_DIR)/gnatbind-cross$(exeext); \
+ 	fi

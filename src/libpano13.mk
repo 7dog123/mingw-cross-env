@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 23849bdbdfc9176a2b53d157e58bd24aa0e7276e
 $(PKG)_SUBDIR   := $(PKG)-$(word 1,$(subst _, ,$($(PKG)_VERSION)))
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://panotools.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/panotools/$(PKG)/$($(PKG)_SUBDIR)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/panotools/files/$(PKG)/$($(PKG)_SUBDIR)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc jpeg tiff libpng zlib
 
 define $(PKG)_UPDATE

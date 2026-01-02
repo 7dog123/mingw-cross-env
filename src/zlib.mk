@@ -5,11 +5,11 @@
 PKG             := zlib
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 1.2.5
-$(PKG)_CHECKSUM := 543fa9abff0442edca308772d6cef85557677e02
+$(PKG)_CHECKSUM := 8e8b93fa5eb80df1afe5422309dca42964562d7e
 $(PKG)_SUBDIR   := zlib-$($(PKG)_VERSION)
-$(PKG)_FILE     := zlib-$($(PKG)_VERSION).tar.bz2
+$(PKG)_FILE     := zlib-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://zlib.net/
-$(PKG)_URL      := http://zlib.net/$($(PKG)_FILE)
+$(PKG)_URL      := http://zlib.net/fossils/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

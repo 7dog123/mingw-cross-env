@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := d33e0efbad5d6a7af7f2e6d1d0beb6e7c941cfca
 $(PKG)_SUBDIR   := exiv2-$($(PKG)_VERSION)
 $(PKG)_FILE     := exiv2-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://www.exiv2.org/
-$(PKG)_URL      := http://www.exiv2.org/$($(PKG)_FILE)
+$(PKG)_URL      := https://github.com/Exiv2/exiv2/releases/download/v$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc libiconv zlib expat
 
 define $(PKG)_UPDATE

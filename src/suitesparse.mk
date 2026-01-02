@@ -8,12 +8,12 @@ $(PKG)_VERSION  := 3.6.0
 $(PKG)_CHECKSUM := bc430a051de5681d31f819b40b7f0ea0be178e04
 $(PKG)_SUBDIR   := SuiteSparse
 $(PKG)_FILE     := SuiteSparse-$($(PKG)_VERSION).tar.gz
-$(PKG)_WEBSITE  := http://www.cise.ufl.edu/research/sparse/SuiteSparse/
-$(PKG)_URL      := http://www.cise.ufl.edu/research/sparse/SuiteSparse/$($(PKG)_FILE)
+$(PKG)_WEBSITE  := https://people.engr.tamu.edu/davis/SuiteSparse/
+$(PKG)_URL      := https://people.engr.tamu.edu/davis/SuiteSparse/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc blas lapack
 
 define $(PKG)_UPDATE
-    wget -q -O- 'http://www.cise.ufl.edu/research/sparse/SuiteSparse/' | \
+    wget -q -O- 'https://people.engr.tamu.edu/davis/SuiteSparse/' | \
     $(SED) -n 's,.*SuiteSparse-\([0-9][^"]*\)\.tar.*,\1,p' | \
     head -1
 endef

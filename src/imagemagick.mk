@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 1d46f9d2b9294b11b9e9c03ee8da7e1df8d92fef
 $(PKG)_SUBDIR   := ImageMagick-$($(PKG)_VERSION)
 $(PKG)_FILE     := ImageMagick-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://www.imagemagick.org/
-$(PKG)_URL      := http://ftp.nluug.nl/ImageMagick/$($(PKG)_FILE)
+$(PKG)_URL      := https://src.rrz.uni-hamburg.de/object/44bf4e5c9e6a78090711119f5bfd7b6c-10157812-1305476040/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc bzip2 ffmpeg fftw freetype jasper jpeg lcms libpng libtool openexr pthreads tiff zlib
 
 define $(PKG)_UPDATE

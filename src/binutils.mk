@@ -4,8 +4,8 @@
 # GNU Binutils
 PKG             := binutils
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 2.21
-$(PKG)_CHECKSUM := ef93235588eb443e4c4a77f229a8d131bccaecc6
+$(PKG)_VERSION  := 2.28
+$(PKG)_CHECKSUM := f8b033731f6baa437d429c60e2623570f1ef9d6b
 $(PKG)_SUBDIR   := binutils-$($(PKG)_VERSION)
 $(PKG)_FILE     := binutils-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://www.gnu.org/software/binutils/
@@ -23,12 +23,11 @@ define $(PKG)_BUILD
     cd '$(1)' && ./configure \
         --target='$(TARGET)' \
         --prefix='$(PREFIX)' \
-        --with-gcc \
-        --with-gnu-ld \
-        --with-gnu-as \
         --disable-nls \
-        --disable-shared \
-        --disable-werror
+        --disable-werror \
+        --disable-rpath \
+        --enable-shared \
+        --enable-static
     $(MAKE) -C '$(1)' -j '$(JOBS)'
     $(MAKE) -C '$(1)' -j 1 install
 endef

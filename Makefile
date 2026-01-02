@@ -1,7 +1,7 @@
 # This file is part of mingw-cross-env.
 # See doc/index.html for further information.
 
-JOBS               := 1
+JOBS               := 3
 TARGET             := i586-mingw32msvc
 SOURCEFORGE_MIRROR := sourceforge.net
 
@@ -62,8 +62,8 @@ CHECK_PKG_ARCHIVE = \
 DOWNLOAD_PKG_ARCHIVE = \
     mkdir -p '$(PKG_DIR)' && \
     $(if $($(1)_URL_2), \
-        ( wget -T 30 -t 3 --no-check-certificate -O- '$($(1)_URL)' || wget --no-check-certificate -O- '$($(1)_URL_2)' ), \
-        wget --no-check-certificate -O- '$($(1)_URL)') \
+        ( wget --no-clobber -T 30 -t 3 --no-check-certificate -O- '$($(1)_URL)' || wget --no-clobber --no-check-certificate -O- '$($(1)_URL_2)' ), \
+        wget --no-clobber --no-check-certificate -O- '$($(1)_URL)') \
     $(if $($(1)_FIX_GZIP), \
         | gzip -d | gzip -9n, \
         ) \

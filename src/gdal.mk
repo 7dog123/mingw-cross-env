@@ -9,8 +9,7 @@ $(PKG)_CHECKSUM := e5a2802933054050c6fb0b0a0e1f46b5dd195b0a
 $(PKG)_SUBDIR   := gdal-$($(PKG)_VERSION)
 $(PKG)_FILE     := gdal-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://www.gdal.org/
-$(PKG)_URL      := http://download.osgeo.org/gdal/$($(PKG)_FILE)
-$(PKG)_URL_2    := ftp://ftp.remotesensing.org/gdal/$($(PKG)_FILE)
+$(PKG)_URL      := http://download.osgeo.org/gdal/old_releases/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc zlib libpng tiff libgeotiff jpeg jasper giflib expat sqlite curl geos postgresql
 
 define $(PKG)_UPDATE

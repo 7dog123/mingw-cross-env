@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 3889469d96dbca3d8522231672e14cca77de4d5e
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://fribidi.org/
-$(PKG)_URL      := http://fribidi.org/download/$($(PKG)_FILE)
+$(PKG)_URL      := https://ftp2.osuosl.org/pub/blfs/conglomeration/$(PKG)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc glib
 
 define $(PKG)_UPDATE

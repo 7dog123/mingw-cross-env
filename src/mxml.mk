@@ -7,13 +7,13 @@ $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 2.6
 $(PKG)_CHECKSUM := df180bd2e3890c97fa8a05dd131f9285468cffe1
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
-$(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
+$(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).orig.tar.gz
 $(PKG)_WEBSITE  := http://www.minixml.org/
-$(PKG)_URL      := http://ftp.easysw.com/pub/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://archive.debian.org/debian/pool/main/m/mxml/mxml_2.6.orig.tar.gz
 $(PKG)_DEPS     := gcc pthreads
 
 define $(PKG)_UPDATE
-    wget -q -O- 'http://ftp.easysw.com/pub/mxml/?C=M;O=D' | \
+    wget -q -O- 'https://archive.debian.org/debian/pool/main/m/mxml/?C=M;O=D' | \
     $(SED) -n 's,.*<a href="\([0-9][^"]*\)/.*,\1,p' | \
     head -1
 endef

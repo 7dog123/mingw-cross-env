@@ -9,11 +9,11 @@ $(PKG)_CHECKSUM := 3f89f861209ce81a6bab1fd1998c0ef311712002
 $(PKG)_SUBDIR   := bzip2-$($(PKG)_VERSION)
 $(PKG)_FILE     := bzip2-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://www.bzip.org/
-$(PKG)_URL      := http://www.bzip.org/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://sourceware.org/pub/$(PKG)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE
-    wget -q -O- 'http://www.bzip.org/downloads.html' | \
+    wget -q -O- 'http://www.bzip.org/$(PKG)' | \
     grep 'bzip2-' | \
     $(SED) -n 's,.*bzip2-\([0-9][^>]*\)\.tar.*,\1,p' | \
     head -1

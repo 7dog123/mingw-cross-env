@@ -8,8 +8,8 @@ $(PKG)_VERSION  := 1.2.1
 $(PKG)_CHECKSUM := bd54354900181b59db3089347cc84ad81e410b38
 $(PKG)_SUBDIR   := flac-$($(PKG)_VERSION)
 $(PKG)_FILE     := flac-$($(PKG)_VERSION).tar.gz
-$(PKG)_WEBSITE  := http://www.xiph.org/ogg/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/flac/flac-src/flac-$($(PKG)_VERSION)-src/$($(PKG)_FILE)
+$(PKG)_WEBSITE  := https://xiph.org/flac/
+$(PKG)_URL      := https://ftp.osuosl.org/pub/xiph/releases/flac/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc libiconv ogg
 
 define $(PKG)_UPDATE

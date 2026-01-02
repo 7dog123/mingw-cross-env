@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 68306c4486c13d005a4e4d54035e0c0b1bdc220b
 $(PKG)_SUBDIR   := freeglut-$(word 1,$(subst -, ,$($(PKG)_VERSION)))
 $(PKG)_FILE     := freeglut-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://freeglut.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/freeglut/freeglut/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/freeglut/files/freeglut/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

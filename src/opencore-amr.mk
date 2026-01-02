@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 289478d49701213255e9d63a93aae9ad472125cc
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://$(PKG).sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://backup.salixos.org/hourly.5/repo/i486/13.1/source/ap/opencore-amr/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

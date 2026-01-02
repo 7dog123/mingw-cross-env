@@ -5,7 +5,7 @@
 PKG             := popt
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 1.16
-$(PKG)_CHECKSUM := cfe94a15a2404db85858a81ff8de27c8ff3e235e
+$(PKG)_CHECKSUM := 1a69b2dbbabfc9fd3539c4406b6858364bb0a033
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://freshmeat.net/projects/popt/

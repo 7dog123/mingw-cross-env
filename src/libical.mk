@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := f781150e2d98806e91b7e0bee02abdc6baf9ac7d
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://freeassociation.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/freeassociation/$(PKG)/$(PKG)-$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/freeassociation/files/$(PKG)/$(PKG)-$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc pthreads
 
 define $(PKG)_UPDATE

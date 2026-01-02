@@ -4,12 +4,12 @@
 # FLTK
 PKG             := fltk
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 1.3.x-r8659
-$(PKG)_CHECKSUM := 97d5002f1f3a32bf78634954e63c491483e727ac
+$(PKG)_VERSION  := 1.1.10
+$(PKG)_CHECKSUM := 0d2b34fede91fa78eeaefb893dd70282f73908a8
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $($(PKG)_SUBDIR).tar.bz2
 $(PKG)_WEBSITE  := http://www.fltk.org/
-$(PKG)_URL      := http://ftp.easysw.com/pub/fltk/snapshots/$($(PKG)_FILE)
+$(PKG)_URL      := https://www.fltk.org/pub/fltk/$($(PKG)_VERSION)/$(PKG)-$($(PKG)_VERSION)-source.tar.bz2
 $(PKG)_DEPS     := gcc zlib jpeg libpng pthreads
 
 define $(PKG)_UPDATE

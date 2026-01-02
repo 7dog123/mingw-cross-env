@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := cba3f50dd657cb1434674a03b21394df9913d764
 $(PKG)_SUBDIR   := $(PKG)
 $(PKG)_FILE     := $(PKG)_$(subst .,_,$($(PKG)_VERSION)).tar.gz
 $(PKG)_WEBSITE  := http://sourceforge.net/projects/$(PKG)/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/$(PKG)/files/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

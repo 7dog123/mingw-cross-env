@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 049a3aff13d283f6e4ea1f9aa3aa6abc067fd42e
 $(PKG)_SUBDIR   := curl-$($(PKG)_VERSION)
 $(PKG)_FILE     := curl-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://curl.haxx.se/libcurl/
-$(PKG)_URL      := http://curl.haxx.se/download/$($(PKG)_FILE)
+$(PKG)_URL      := https://curl.askapache.com/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc gnutls libidn
 
 define $(PKG)_UPDATE

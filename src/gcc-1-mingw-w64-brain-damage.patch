@@ -1,0 +1,48 @@
+diff --git a/gcc/config/i386/mingw32.h b/gcc/config/i386/mingw32.h
+--- a/gcc/config/i386/mingw32.h
++++ b/gcc/config/i386/mingw32.h
+@@ -157,22 +157,41 @@ along with GCC; see the file COPYING3.  
+    %{fvtable-verify=none:%s; \
+     fvtable-verify=preinit:vtv_end.o%s; \
+     fvtable-verify=std:vtv_end.o%s} \
+   crtend.o%s"
+ 
+-/* Override startfile prefix defaults.  */
++#if MINGW_W64_BRAIN_DAMAGE
++/* FIXME: override startfile prefix defaults; unconditionally disabled.
++
++   This may suit the mingw-w64 developers, but it seems to unnecessarily
++   restrict installation path choice; besides, the original defaults seem
++   to work just fine for me (KDM).  */
++
+ #ifndef STANDARD_STARTFILE_PREFIX_1
+ #define STANDARD_STARTFILE_PREFIX_1 "/mingw/lib/"
+ #endif
+ #ifndef STANDARD_STARTFILE_PREFIX_2
+ #define STANDARD_STARTFILE_PREFIX_2 ""
+ #endif
+ 
+-/* For native mingw-version we need to take care that NATIVE_SYSTEM_HEADER_DIR
+-   macro contains POSIX-style path.  See bug 52947.  */
++/* FIXME: work around bug 52947; unconditionally disabled, for now.
++
++   This gross hack works around an issue when building under MSYS:
++   for native mingw-version we need to ensure that NATIVE_SYSTEM_HEADER_DIR
++   is defined to represent a POSIX-style path.  Unfortunately, MSYS passes
++   the definition from the makefile, after translation to a fully device
++   qualified native windows absolute path; TARGET_SYSTEM_ROOT is passed
++   in similarly translated format, and the concatenation of the pair
++   becomes invalid as a path name.
++
++   The hack may suit mingw-w64 developers, but it's too restrictive for
++   general use, and may even produce bogus path references, such as
++   described by bug 56279.  */
++
+ #undef NATIVE_SYSTEM_HEADER_DIR
+ #define NATIVE_SYSTEM_HEADER_DIR "/mingw/include"
++#endif /* MINGW_W64_BRAIN_DAMAGE */
+ 
+ /* Output STRING, a string representing a filename, to FILE.
+    We canonicalize it to be in Unix format (backslashes are replaced
+    forward slashes.  */
+ #undef OUTPUT_QUOTED_STRING

@@ -1,0 +1,87 @@
+diff --git a/gcc/ada/adaint.c b/gcc/ada/adaint.c
+--- a/gcc/ada/adaint.c
++++ b/gcc/ada/adaint.c
+@@ -1328,20 +1328,20 @@ win32_filetime (HANDLE h)
+   return (time_t) 0;
+ }
+ 
+ /* As above but starting from a FILETIME.  */
+ static void
+-f2t (const FILETIME *ft, __time64_t *t)
++f2t (const FILETIME *ft, GNAT_TIME_T *t)
+ {
+   union
+   {
+     FILETIME ft_time;
+     unsigned long long ull_time;
+   } t_write;
+ 
+   t_write.ft_time = *ft;
+-  *t = (__time64_t) (t_write.ull_time / 10000000ULL - w32_epoch_offset);
++  *t = (GNAT_TIME_T) (t_write.ull_time / 10000000ULL - w32_epoch_offset);
+ }
+ #endif
+ 
+ /* Return a GNAT time stamp given a file name.  */
+ 
+@@ -1350,11 +1350,11 @@ OS_Time
+ {
+    if (attr->timestamp == (OS_Time)-2) {
+ #if defined (_WIN32)
+       BOOL res;
+       WIN32_FILE_ATTRIBUTE_DATA fad;
+-      __time64_t ret = -1;
++      GNAT_TIME_T ret = -1;
+       TCHAR wname[GNAT_MAX_PATH_LEN];
+       S2WSC (wname, name, GNAT_MAX_PATH_LEN);
+ 
+       if ((res = GetFileAttributesEx (wname, GetFileExInfoStandard, &fad)))
+ 	f2t (&fad.ftLastWriteTime, &ret);
+diff --git a/gcc/ada/adaint.h b/gcc/ada/adaint.h
+--- a/gcc/ada/adaint.h
++++ b/gcc/ada/adaint.h
+@@ -57,17 +57,27 @@ extern "C" {
+ #define GNAT_STAT stat64
+ #define GNAT_FSTAT fstat64
+ #define GNAT_LSTAT lstat64
+ #define GNAT_STRUCT_STAT struct stat64
+ 
+-#elif defined(_WIN32)
++#elif defined(_WIN64)
+ #define GNAT_FOPEN fopen64
+ #define GNAT_OPEN open
+ #define GNAT_STAT stat64
+ #define GNAT_FSTAT fstat64
+ #define GNAT_LSTAT lstat
+ #define GNAT_STRUCT_STAT struct stat64
++#define GNAT_TIME_T __time64_t
++
++#elif defined(_WIN32)
++#define GNAT_FOPEN fopen64
++#define GNAT_OPEN open
++#define GNAT_STAT _stati64
++#define GNAT_FSTAT _fstati64
++#define GNAT_LSTAT _stati64
++#define GNAT_STRUCT_STAT struct _stati64
++#define GNAT_TIME_T time_t
+ 
+ #else
+ #define GNAT_FOPEN fopen
+ #define GNAT_OPEN open
+ #define GNAT_STAT stat
+diff --git a/gcc/ada/cstreams.c b/gcc/ada/cstreams.c
+--- a/gcc/ada/cstreams.c
++++ b/gcc/ada/cstreams.c
+@@ -260,11 +260,11 @@ char *
+ #endif
+ 
+   return buffer;
+ }
+ 
+-#ifdef _WIN32
++#ifdef _WIN64
+   /* On Windows we want to use the fseek/fteel supporting large files. This
+      issue is due to the fact that a long on Win64 is still a 32 bits value */
+ __int64
+ __gnat_ftell64 (FILE *stream)
+ {

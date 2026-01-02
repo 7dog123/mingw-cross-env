@@ -5,11 +5,11 @@
 PKG             := graphicsmagick
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 1.3.12
-$(PKG)_CHECKSUM := 6b8a414af162ad8679f2f04b10f128edc8ee3233
+$(PKG)_CHECKSUM := 804e05339a6f6e642518fee17a6e4eddcdcc4047
 $(PKG)_SUBDIR   := GraphicsMagick-$($(PKG)_VERSION)
-$(PKG)_FILE     := GraphicsMagick-$($(PKG)_VERSION).tar.bz2
+$(PKG)_FILE     := GraphicsMagick-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://www.graphicsmagick.org/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/$(PKG)/files/$(PKG)-history/1.3/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc pthreads libtool zlib bzip2 jpeg jasper lcms1 libpng tiff freetype libxml2
 
 define $(PKG)_UPDATE

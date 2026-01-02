@@ -1,0 +1,34 @@
+# HG changeset patch
+# Parent 3aff32c7932e26d2ad269b98b22ed3186a519c29
+diff --git a/libgfortran/Makefile.am b/libgfortran/Makefile.am
+--- a/libgfortran/Makefile.am
++++ b/libgfortran/Makefile.am
+@@ -43,11 +43,11 @@ libgfortran_la_LDFLAGS = -version-info `
+ libgfortran_la_DEPENDENCIES = $(version_dep) libgfortran.spec $(LIBQUADLIB_DEP)
+ 
+ cafexeclib_LTLIBRARIES = libcaf_single.la
+ cafexeclibdir = $(libdir)/gcc/$(target_alias)/$(gcc_version)$(MULTISUBDIR)
+ libcaf_single_la_SOURCES = caf/single.c
+-libcaf_single_la_LDFLAGS = -static
++libcaf_single_la_LDFLAGS = -static -no-undefined
+ libcaf_single_la_DEPENDENCIES = caf/libcaf.h
+ libcaf_single_la_LINK = $(LINK) $(libcaf_single_la_LDFLAGS)
+ 
+ if IEEE_SUPPORT
+ fincludedir = $(libdir)/gcc/$(target_alias)/$(gcc_version)$(MULTISUBDIR)/finclude
+diff --git a/libgfortran/Makefile.in b/libgfortran/Makefile.in
+--- a/libgfortran/Makefile.in
++++ b/libgfortran/Makefile.in
+@@ -604,11 +604,11 @@ libgfortran_la_LDFLAGS = -version-info `
+ 
+ libgfortran_la_DEPENDENCIES = $(version_dep) libgfortran.spec $(LIBQUADLIB_DEP)
+ cafexeclib_LTLIBRARIES = libcaf_single.la
+ cafexeclibdir = $(libdir)/gcc/$(target_alias)/$(gcc_version)$(MULTISUBDIR)
+ libcaf_single_la_SOURCES = caf/single.c
+-libcaf_single_la_LDFLAGS = -static
++libcaf_single_la_LDFLAGS = -static -no-undefined
+ libcaf_single_la_DEPENDENCIES = caf/libcaf.h
+ libcaf_single_la_LINK = $(LINK) $(libcaf_single_la_LDFLAGS)
+ @IEEE_SUPPORT_TRUE@fincludedir = $(libdir)/gcc/$(target_alias)/$(gcc_version)$(MULTISUBDIR)/finclude
+ @IEEE_SUPPORT_TRUE@nodist_finclude_HEADERS = ieee_arithmetic.mod ieee_exceptions.mod ieee_features.mod
+ AM_CPPFLAGS = -iquote$(srcdir)/io -I$(srcdir)/$(MULTISRCTOP)../gcc \

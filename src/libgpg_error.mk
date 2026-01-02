@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 95b324359627fbcb762487ab6091afbe59823b29
 $(PKG)_SUBDIR   := libgpg-error-$($(PKG)_VERSION)
 $(PKG)_FILE     := libgpg-error-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := ftp://ftp.gnupg.org/gcrypt/libgpg-error/
-$(PKG)_URL      := ftp://ftp.gnupg.org/gcrypt/libgpg-error/$($(PKG)_FILE)
+$(PKG)_URL      := https://gnupg.org/ftp/gcrypt/libgpg-error/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

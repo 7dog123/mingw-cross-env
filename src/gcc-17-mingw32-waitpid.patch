@@ -1,0 +1,31 @@
+From 1ab4db9379e5096a04c4c68b9edfef9c938cf3b5 Mon Sep 17 00:00:00 2001
+From: Eli Zaretskii <eliz@gnu.org>
+Date: Wed, 24 May 2017 21:35:59 +0000
+Subject: [PATCH] waitpid.c (wait): Define as a macro that calls _cwait, so
+ that this function works on MinGW.
+
+2017-05-24  Eli Zaretskii  <eliz@gnu.org>
+* libiberty/waitpid.c (wait) [__MINGW32__]: Define as a macro
+that calls _cwait, so that this function works on MinGW.
+
+From-SVN: r248430
+---
+ libiberty/waitpid.c | 5 +++++
+ 1 files changed, 5 insertions(+)
+
+diff --git a/libiberty/waitpid.c b/libiberty/waitpid.c
+index fd519d7696e07..c0e9c3e0ca995 100644
+--- a/libiberty/waitpid.c
++++ b/libiberty/waitpid.c
+@@ -23,6 +23,11 @@ does the return value.  The third argument is unused in @libib{}.
+ #include <sys/wait.h>
+ #endif
+ 
++#ifdef __MINGW32__
++#include <process.h>
++#define wait(s)  _cwait(s,pid,_WAIT_CHILD)
++#endif
++
+ pid_t
+ waitpid (pid_t pid, int *stat_loc, int options ATTRIBUTE_UNUSED)
+ {

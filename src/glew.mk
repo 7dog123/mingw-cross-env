@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := ed555d15d0f01239b262c4cf803e97d60d8a18b6
 $(PKG)_SUBDIR   := glew-$($(PKG)_VERSION)
 $(PKG)_FILE     := glew-$($(PKG)_VERSION).tgz
 $(PKG)_WEBSITE  := http://glew.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/glew/glew/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/glew/files/glew/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

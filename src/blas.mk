@@ -5,11 +5,11 @@
 PKG             := blas
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 1
-$(PKG)_CHECKSUM := a643b737c30a0a5b823e11e33c9d46a605122c61
+$(PKG)_CHECKSUM := cfad2373889602c4ecb525a3a0d355c5e7383c1b
 $(PKG)_SUBDIR   := BLAS
 $(PKG)_FILE     := $(PKG).tgz
 $(PKG)_WEBSITE  := http://www.netlib.org/$(PKG)/
-$(PKG)_URL      := http://www.netlib.org/$(PKG)/$($(PKG)_FILE)
+#$(PKG)_URL      := https://www.netlib.org/blas/blas.tgz
 $(PKG)_URL_2    := ftp://ftp.eq.uc.pt/pub/software/math/netlib/$(PKG)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 

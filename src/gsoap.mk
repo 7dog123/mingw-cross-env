@@ -4,12 +4,12 @@
 # gSOAP
 PKG             := gsoap
 $(PKG)_IGNORE   :=
-$(PKG)_VERSION  := 2.8.2
-$(PKG)_CHECKSUM := 199b7d4cf0b6a5bf81a2198e39f03c092ffc05a7
+$(PKG)_VERSION  := 2.8.3.orig
+$(PKG)_CHECKSUM := 2318037ecc449a05ba6db579bb645e98e9af92d0
 $(PKG)_SUBDIR   := gsoap-$(call SHORT_PKG_VERSION,$(PKG))
-$(PKG)_FILE     := gsoap_$($(PKG)_VERSION).zip
+$(PKG)_FILE     := gsoap_$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://gsoap2.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/gsoap2/gSOAP/$($(PKG)_FILE)
+$(PKG)_URL      := https://old-releases.ubuntu.com/ubuntu/pool/universe/g/$(PKG)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc gnutls
 
 define $(PKG)_UPDATE

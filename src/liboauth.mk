@@ -9,11 +9,11 @@ $(PKG)_CHECKSUM := 9c48dcfe9bb2f7b0fa4825e645056bdf77640454
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://liboauth.sourceforge.net/
-$(PKG)_URL      := http://liboauth.sourceforge.net/pool/$($(PKG)_FILE)
+$(PKG)_URL      := https://sourceforge.net/projects/liboauth/files/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc curl openssl
 
 define $(PKG)_UPDATE
-    wget -q -O- 'http://liboauth.sourceforge.net/' | \
+    wget -q -O- 'https://sourceforge.net/projects/liboauth/files/' | \
     $(SED) -n 's,.*liboauth-\([0-9][^>]*\)\.tar.*,\1,p' | \
     head -1
 endef

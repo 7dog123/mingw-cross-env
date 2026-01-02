@@ -1,0 +1,17 @@
+diff --git a/libssp/ssp.c b/libssp/ssp.c
+--- a/libssp/ssp.c
++++ b/libssp/ssp.c
+@@ -63,10 +63,13 @@ see the files COPYING3 and COPYING.RUNTI
+ #endif
+ #endif
+ #ifdef HAVE_SYSLOG_H
+ # include <syslog.h>
+ #endif
++#if defined (_WIN32) && !defined (__CYGWIN__)
++#include <wincrypt.h>
++#endif
+ 
+ void *__stack_chk_guard = 0;
+ 
+ static void __attribute__ ((constructor))
+ __guard_setup (void)

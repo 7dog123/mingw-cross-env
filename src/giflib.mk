@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 22680f604ec92065f04caf00b1c180ba74fb8562
 $(PKG)_SUBDIR   := giflib-$($(PKG)_VERSION)
 $(PKG)_FILE     := giflib-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://sourceforge.net/projects/libungif/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/giflib/giflib 4.x/giflib-$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://sourceforge.net/projects/giflib/files/giflib-4.x/giflib-4.1.6/giflib-4.1.6.tar.bz2
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

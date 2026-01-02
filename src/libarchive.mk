@@ -8,12 +8,12 @@ $(PKG)_VERSION  := 2.8.4
 $(PKG)_CHECKSUM := b9cc3bbd20bd71f996be9ec738f19fda8653f7af
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.gz
-$(PKG)_WEBSITE  := http://code.google.com/p/libarchive/
-$(PKG)_URL      := http://libarchive.googlecode.com/files/$($(PKG)_FILE)
+$(PKG)_WEBSITE  := https://libarchive.org
+$(PKG)_URL      := https://libarchive.org/downloads/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc bzip2 libxml2 openssl xz zlib
 
 define $(PKG)_UPDATE
-    wget -q -O- 'http://code.google.com/p/libarchive/downloads/list?sort=-uploaded' | \
+    wget -q -O- 'https://libarchive.org/downloads/' | \
     $(SED) -n 's,.*libarchive-\([0-9][^<]*\)\.tar.*,\1,p' | \
     head -1
 endef

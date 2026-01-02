@@ -1,0 +1,92 @@
+# HG changeset patch
+# Parent a7e85561d1fecd2206e16b40c249e430c00dca6c
+diff --git a/gcc/ada/gcc-interface/Makefile.in b/gcc/ada/gcc-interface/Makefile.in
+--- a/gcc/ada/gcc-interface/Makefile.in
++++ b/gcc/ada/gcc-interface/Makefile.in
+@@ -1780,28 +1780,28 @@ ifeq ($(strip $(filter-out cygwin% mingw
+   ifeq ($(strip $(filter-out x86_64%,$(target_cpu))),)
+     ifeq ($(strip $(MULTISUBDIR)),/32)
+       LIBGNAT_TARGET_PAIRS += \
+         $(X86_TARGET_PAIRS) \
+         system.ads<system-mingw.ads
+-      SO_OPTS= -m32 -Wl,-soname,
++      SO_OPTS= -m32 -Wl,-out-implib,
+     else
+       LIBGNAT_TARGET_PAIRS += \
+         $(X86_64_TARGET_PAIRS) \
+         system.ads<system-mingw-x86_64.ads
+-      SO_OPTS = -m64 -Wl,-soname,
++      SO_OPTS = -m64 -Wl,-out-implib,
+     endif
+   else
+     ifeq ($(strip $(MULTISUBDIR)),/64)
+       LIBGNAT_TARGET_PAIRS += \
+         $(X86_64_TARGET_PAIRS) \
+         system.ads<system-mingw-x86_64.ads
+-      SO_OPTS = -m64 -Wl,-soname,
++      SO_OPTS = -m64 -Wl,-out-implib,
+     else
+       LIBGNAT_TARGET_PAIRS += \
+         $(X86_TARGET_PAIRS) \
+         system.ads<system-mingw.ads
+-      SO_OPTS = -m32 -Wl,-soname,
++      SO_OPTS = -m32 -Wl,-out-implib,
+     endif
+   endif
+ 
+   EXTRA_GNATRTL_NONTASKING_OBJS = \
+     s-win32.o s-winext.o g-regist.o g-sse.o g-ssvety.o
+@@ -2898,17 +2898,17 @@ gnatlib-shared-win32:
+ 	cd $(RTSDIR); `echo "$(GCC_FOR_TARGET)" \
+                 | sed -e 's,\./xgcc,../../xgcc,' -e 's,-B\./,-B../../,'` -shared -shared-libgcc \
+ 		$(PICFLAG_FOR_TARGET) \
+ 		-o libgnat$(hyphen)$(LIBRARY_VERSION)$(soext) \
+ 		$(GNATRTL_NONTASKING_OBJS) $(LIBGNAT_OBJS) \
+-		$(SO_OPTS)libgnat$(hyphen)$(LIBRARY_VERSION)$(soext) $(MISCLIB)
++		$(SO_OPTS)libgnat$(soext)$(arext) $(MISCLIB)
+ 	cd $(RTSDIR); `echo "$(GCC_FOR_TARGET)" \
+                 | sed -e 's,\./xgcc,../../xgcc,' -e 's,-B\./,-B../../,'` -shared -shared-libgcc \
+ 		$(PICFLAG_FOR_TARGET) \
+ 		-o libgnarl$(hyphen)$(LIBRARY_VERSION)$(soext) \
+ 		$(GNATRTL_TASKING_OBJS) \
+-		$(SO_OPTS)libgnarl$(hyphen)$(LIBRARY_VERSION)$(soext) \
++		$(SO_OPTS)libgnarl$(soext)$(arext) \
+ 		$(THREADSLIB) -Wl,libgnat$(hyphen)$(LIBRARY_VERSION)$(soext)
+ 
+ gnatlib-shared-darwin:
+ 	$(MAKE) $(FLAGS_TO_PASS) \
+ 	     GNATLIBFLAGS="$(GNATLIBFLAGS)" \
+diff --git a/libada/configure.ac b/libada/configure.ac
+--- a/libada/configure.ac
++++ b/libada/configure.ac
+@@ -125,26 +125,25 @@ AC_SUBST([PICFLAG])
+ # These must be passed down, or are needed by gcc/libgcc.mvars
+ AC_PROG_AWK
+ AC_PROG_LN_S
+ 
+ # Determine what to build for 'gnatlib'
+-if test $build = $target \
+-   && test ${enable_shared} = yes ; then
+-  # Note that build=target is almost certainly the wrong test; FIXME
++if test ${enable_shared} = yes ; then
+   default_gnatlib_target="gnatlib-shared"
+ else
+   default_gnatlib_target="gnatlib-plain"
+ fi
+ AC_SUBST([default_gnatlib_target])
+ 
+ # Check for _Unwind_GetIPInfo
+ GCC_CHECK_UNWIND_GETIPINFO
+-have_getipinfo=
+ if test x$have_unwind_getipinfo = xyes; then
+   have_getipinfo=-DHAVE_GETIPINFO
++else
++  have_getipinfo=
+ fi
+-AC_SUBST(have_getipinfo)
++AC_SUBST([have_getipinfo])
+ 
+ # Output: create a Makefile.
+ AC_CONFIG_FILES([Makefile])
+ 
+ AC_OUTPUT

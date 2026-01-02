@@ -34,19 +34,20 @@ define $(PKG)_BUILD
     cd    '$(1).build' && '$(1)/configure' \
         --target='$(TARGET)' \
         --prefix='$(PREFIX)' \
-        --enable-languages='c,c++,objc,fortran' \
-        --enable-version-specific-runtime-libs \
-        --with-gcc \
-        --with-gnu-ld \
-        --with-gnu-as \
-        --disable-nls \
-        --disable-shared \
+        --disable-win32-regestry \
+        --enable-languages='c,c++' \
+        --enable-static \
+        --enable-shared \
+        --enable-threads \
+        --with-dwarf2 \
         --disable-sjlj-exceptions \
-        --without-x \
-        --disable-win32-registry \
-        --enable-threads=win32 \
-        --disable-libgomp \
-        --disable-libmudflap
+        --enable-version-specific-runtime-libs \
+        --enable-libstdcxx-debug \
+        --enable-libgomp \
+        --disable-libvtv \
+        --enable-nls \
+        --with-arch=i586 \
+        --with-tune=pentium
     $(MAKE) -C '$(1).build' -j '$(JOBS)'
     $(MAKE) -C '$(1).build' -j 1 install
 

@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 39552f3e49341197fea8373824ec609c757e890b
 $(PKG)_SUBDIR   := wxMSW-$($(PKG)_VERSION)
 $(PKG)_FILE     := wxMSW-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://www.wxwidgets.org/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/wxwindows/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/wxwindows/files/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc libiconv libpng jpeg tiff sdl zlib expat
 
 define $(PKG)_UPDATE

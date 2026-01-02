@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := d6d834d3ba2bd3c316c9b3070369d32701703f78
 $(PKG)_SUBDIR   := $(PKG)_v$(subst .,,$($(PKG)_VERSION))
 $(PKG)_FILE     := $(PKG)_v$(subst .,,$($(PKG)_VERSION)).tar.gz
 $(PKG)_WEBSITE  := http://$(PKG).sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/$(PKG)/Version $($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://mirror.accum.se/mirror/archive/ftp.sunet.se/pub/mac/fink/md5/0c4f4bf86aa2a5a737adc0e08cb77737/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

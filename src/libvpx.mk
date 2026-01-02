@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := a3522bd2b73d52381ba767ded1cbf4760e9cc6f8
 $(PKG)_SUBDIR   := $(PKG)-v$($(PKG)_VERSION)
 $(PKG)_FILE     := $(PKG)-v$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://code.google.com/p/webm/
-$(PKG)_URL      := http://webm.googlecode.com/files/$($(PKG)_FILE)
+$(PKG)_URL      := https://backup.salixos.org/daily.2/repo/x86_64/13.37/source/l/libvpx/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE

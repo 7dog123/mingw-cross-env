@@ -1,0 +1,45 @@
+diff --git a/libgfortran/intrinsics/selected_char_kind.c b/libgfortran/intrinsics/selected_char_kind.c
+--- a/libgfortran/intrinsics/selected_char_kind.c
++++ b/libgfortran/intrinsics/selected_char_kind.c
+@@ -24,10 +24,11 @@ see the files COPYING3 and COPYING.RUNTI
+ 
+ 
+ #include "libgfortran.h"
+ 
+ #include <string.h>
++#include <strings.h>
+ 
+ 
+ extern GFC_INTEGER_4 selected_char_kind (gfc_charlen_type, char *);
+ export_proto(selected_char_kind);
+ 
+diff --git a/libgfortran/runtime/environ.c b/libgfortran/runtime/environ.c
+--- a/libgfortran/runtime/environ.c
++++ b/libgfortran/runtime/environ.c
+@@ -23,10 +23,11 @@ see the files COPYING3 and COPYING.RUNTI
+ <http://www.gnu.org/licenses/>.  */
+ 
+ #include "libgfortran.h"
+ 
+ #include <string.h>
++#include <strings.h>
+ #include <stdlib.h>
+ #include <ctype.h>
+ 
+ #ifdef HAVE_UNISTD_H
+ #include <unistd.h>
+diff --git a/libgfortran/runtime/string.c b/libgfortran/runtime/string.c
+--- a/libgfortran/runtime/string.c
++++ b/libgfortran/runtime/string.c
+@@ -22,10 +22,11 @@ a copy of the GCC Runtime Library Except
+ see the files COPYING3 and COPYING.RUNTIME respectively.  If not, see
+ <http://www.gnu.org/licenses/>.  */
+ 
+ #include "libgfortran.h"
+ #include <string.h>
++#include <strings.h>
+ #include <stdlib.h>
+ 
+ 
+ /* Given a fortran string, return its length exclusive of the trailing
+    spaces.  */

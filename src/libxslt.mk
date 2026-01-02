@@ -5,11 +5,11 @@
 PKG             := libxslt
 $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 1.1.26
-$(PKG)_CHECKSUM := 69f74df8228b504a87e2b257c2d5238281c65154
+$(PKG)_CHECKSUM := 7812715d5dce844a697e2e8780af00307fcd5e6a
 $(PKG)_SUBDIR   := libxslt-$($(PKG)_VERSION)
-$(PKG)_FILE     := libxslt-$($(PKG)_VERSION).tar.gz
+$(PKG)_FILE     := libxslt-$($(PKG)_VERSION).tar.xz
 $(PKG)_WEBSITE  := http://xmlsoft.org/XSLT/
-$(PKG)_URL      := ftp://xmlsoft.org/libxslt/$($(PKG)_FILE)
+$(PKG)_URL      := https://download.gnome.org/sources/libxslt/1.1/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc libxml2 libgcrypt
 
 define $(PKG)_UPDATE

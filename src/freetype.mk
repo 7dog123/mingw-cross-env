@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 1d136cbc51c67b212c91ba04dc5db797f35e64e6
 $(PKG)_SUBDIR   := freetype-$($(PKG)_VERSION)
 $(PKG)_FILE     := freetype-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://freetype.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/freetype/freetype2/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/projects/freetype/files/freetype2/$($(PKG)_VERSION)/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc zlib
 
 define $(PKG)_UPDATE

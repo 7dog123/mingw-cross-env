@@ -7,9 +7,9 @@ $(PKG)_IGNORE   :=
 $(PKG)_VERSION  := 2.1.3~rc5
 $(PKG)_CHECKSUM := 8508f26c84001d7bc949246affa03744fa1fd22e
 $(PKG)_SUBDIR   := $(PKG)-$($(PKG)_VERSION)
-$(PKG)_FILE     := $(PKG)-$(subst ~,-,$($(PKG)_VERSION)).tar.bz2
+$(PKG)_FILE     := $(PKG)-$($(PKG)_VERSION).tar.bz2
 $(PKG)_WEBSITE  := http://sourceforge.net/projects/$(PKG)/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/$(PKG)/FTGL Source/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://sourceforge.net/projects/ftgl/files/FTGL%20Source/2.1.3~rc5/ftgl-2.1.3-rc5.tar.bz2
 $(PKG)_DEPS     := gcc freetype
 
 define $(PKG)_UPDATE

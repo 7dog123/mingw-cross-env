@@ -1,0 +1,44 @@
+# HG changeset patch
+# Parent 2f5645b11f730a955374537c256825d08443551d
+
+diff --git a/libobjc/Makefile.in b/libobjc/Makefile.in
+--- a/libobjc/Makefile.in
++++ b/libobjc/Makefile.in
+@@ -304,18 +304,20 @@ aclocal_deps = \
+ 	cd $(srcdir) && $(AUTOCONF)
+ 
+ $(srcdir)/aclocal.m4: @MAINT@ $(aclocal_deps)
+ 	cd $(srcdir) && $(ACLOCAL) $(ACLOCAL_AMFLAGS)
+ 
+-install: install-libs install-headers
++install-strip: INSTALL_STRIP_FLAG = -s
++install install-strip: install-libs install-headers
+ 
+ install-libs: installdirs
+ 	$(SHELL) $(multi_basedir)/mkinstalldirs $(DESTDIR)$(toolexeclibdir)
+-	$(LIBTOOL_INSTALL) $(INSTALL) libobjc$(libsuffix).la $(DESTDIR)$(toolexeclibdir);
++	$(LIBTOOL_INSTALL) $(INSTALL) $(INSTALL_STRIP_FLAG) \
++	  libobjc$(libsuffix).la $(DESTDIR)$(toolexeclibdir);
+ 	if [ "$(OBJC_BOEHM_GC)" ]; then \
+-	  $(LIBTOOL_INSTALL) $(INSTALL) libobjc_gc$(libsuffix).la \
+-				$(DESTDIR)$(toolexeclibdir);\
++	  $(LIBTOOL_INSTALL) $(INSTALL) $(INSTALL_STRIP_FLAG) \
++	    libobjc_gc$(libsuffix).la $(DESTDIR)$(toolexeclibdir);\
+ 	fi
+ 	$(MULTIDO) $(FLAGS_TO_PASS) multi-do DO="$@"
+ 	@-$(LIBTOOL) --mode=finish $(DESTDIR)$(toolexeclibdir)
+ 
+ # Copy Objective-C headers to installation include directory.
+@@ -324,11 +326,11 @@ install-headers:
+ 	for file in $(OBJC_H); do \
+ 	  realfile=$(srcdir)/objc/$${file}; \
+ 	  $(INSTALL_DATA) $${realfile} $(DESTDIR)$(libsubdir)/$(includedirname)/objc; \
+ 	done
+ 
+-check uninstall install-strip dist installcheck installdirs:
++check uninstall dist installcheck installdirs:
+ 
+ mostlyclean:
+ 	-$(LIBTOOL_CLEAN) rm -f libobjc$(libsuffix).la libobjc_gc$(libsuffix).la *.lo
+ 	-rm -f runtime-info.h tmp-runtime.s *.o *.lo libobjc* xforward \
+ 		fflags *.aux *.cp *.dvi *.pdf *.fn *.info *.ky *.log *.pg \

@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := f90f54da31a6544057c25df7dbcc6954604de079
 $(PKG)_SUBDIR   := vigra-$(word 1,$(subst -, ,$($(PKG)_VERSION)))
 $(PKG)_FILE     := vigra-$($(PKG)_VERSION)-src.tar.gz
 $(PKG)_WEBSITE  := http://hci.iwr.uni-heidelberg.de/vigra
-$(PKG)_URL      := $($(PKG)_WEBSITE)/$($(PKG)_FILE)
+$(PKG)_URL      := https://www.jabawok.net/gentoo/distfiles/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc jpeg tiff libpng
 
 define $(PKG)_UPDATE

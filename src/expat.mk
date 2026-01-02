@@ -9,7 +9,7 @@ $(PKG)_CHECKSUM := 663548c37b996082db1f2f2c32af060d7aa15c2d
 $(PKG)_SUBDIR   := expat-$($(PKG)_VERSION)
 $(PKG)_FILE     := expat-$($(PKG)_VERSION).tar.gz
 $(PKG)_WEBSITE  := http://expat.sourceforge.net/
-$(PKG)_URL      := http://$(SOURCEFORGE_MIRROR)/project/expat/expat/$($(PKG)_VERSION)/$($(PKG)_FILE)
+$(PKG)_URL      := https://github.com/libexpat/libexpat/releases/download/R_2_0_1/$($(PKG)_FILE)
 $(PKG)_DEPS     := gcc
 
 define $(PKG)_UPDATE
